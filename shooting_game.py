@@ -3,6 +3,7 @@ from pygame.locals import *
 import player
 import enemy
 import boss
+import back_ground
 
 #初期化
 pygame.init()
@@ -22,16 +23,16 @@ FPS = 60
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((width,height))
+screen_name = pygame.display.set_caption('スペースシューティングゲーム')
 
 player = player.player()
 enemy = enemy.enemy()
 boss = boss.boss()
+bg = back_ground.Background()
 
-#while===============================================================================================================
+#メインループ===============================================================================================================
 flag  =True
 while flag:
-    #画面の塗りつぶし
-    screen.fill(WHITE)
 
     #イベントの取得
     for event in pygame.event.get():
@@ -40,6 +41,14 @@ while flag:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 flag = False
+
+    pressed_key = pygame.key.get_pressed()
+    player.update(pressed_key)
+    bg.scroll_bg(screen)
+
+    #キャラクターの配置
+    screen.blit(player.surf,player.rect)
+    
     #画面の更新
     pygame.display.update()
     clock.tick(FPS)
