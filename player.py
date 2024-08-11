@@ -16,13 +16,14 @@ from pygame.locals import (
 
 width = 450
 height = 600
+bullet_speed = 5
 
-class player():
+class Player():
     def __init__(self):
-        super(player, self).__init__()
+        # super(player, self).__init__()
         self.surf = pygame.image.load("pypygame/source/png/player.png").convert()
         self.surf.set_colorkey((255,255,255), RLEACCEL)
-        self.rect = self.surf.get_rect(center=(width/2, height/2))
+        self.rect = self.surf.get_rect(center=(width-220, height-50))
 
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
