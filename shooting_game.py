@@ -1,4 +1,8 @@
 import pygame
+from pygame.locals import *
+import player
+import enemy
+import boss
 
 #初期化
 pygame.init()
@@ -18,6 +22,10 @@ FPS = 60
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((width,height))
+
+player = player.player()
+enemy = enemy.enemy()
+boss = boss.boss()
 
 #while===============================================================================================================
 flag  =True
