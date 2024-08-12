@@ -9,7 +9,7 @@ import back_ground
 #初期化
 pygame.init()
 
-#設定
+#設定========================
 
 width = 450
 height = 600
@@ -26,10 +26,18 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((width,height))
 screen_name = pygame.display.set_caption('スペースシューティングゲーム')
 
+bullets_group = pygame.sprite.Group()
+
+#関数
+def fire_bullet():
+    new_bullet = bullet.Bullet()
+    bullets_group.add(new_bullet)
+
+#==========================================================
+#インスタンス生成
 player = player.Player()
 enemy = enemy.enemy()
 boss = boss.boss()
-bullet = bullet.Bullet()
 bg = back_ground.Background()
 
 #メインループ===============================================================================================================
@@ -45,13 +53,17 @@ while flag:
             if event.key == pygame.K_q:
                 flag = False
             if event.key == pygame.K_SPACE:
-                bullet.draw_bullet(screen)
+                fire_bullet()
+                print(bullets_group)
+                
 
     pressed_key = pygame.key.get_pressed()
     player.update(pressed_key)
-    #弾の更新
-    bullet.update_bullet()
-    bullet.draw_bullet(screen)
+    #弾の更新（再描画とy座標の更新）
+    for tama in bullets_group.sprites():
+     tama.draw_bullet(screen,)
+     tama.update_bullet()
+    
 
     #キャラクターの配置
     screen.blit(player.surf,player.rect)

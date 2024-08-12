@@ -43,4 +43,4 @@ class Player():
         if self.rect.top < 0:
             self.rect.top = 0
         if self.rect.bottom >= height:
-            self.rect.bottom = height
+            self.rect.bottom = height 
