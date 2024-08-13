@@ -29,9 +29,9 @@ screen_name = pygame.display.set_caption('スペースシューティングゲ�
 bullets_group = pygame.sprite.Group()
 
 #関数
-def fire_bullet():
-    new_bullet = bullet.Bullet()
-    bullets_group.add(new_bullet)
+# def fire_bullet():
+#     new_bullet = bullet.bullet()
+#     bullets_group.add(new_bullet)
 
 #==========================================================
 #インスタンス生成
@@ -53,17 +53,11 @@ while flag:
             if event.key == pygame.K_q:
                 flag = False
             if event.key == pygame.K_SPACE:
-                fire_bullet()
-                print(bullets_group)
+                player.fire_bullet(screen)
                 
 
     pressed_key = pygame.key.get_pressed()
     player.update(pressed_key)
-    #弾の更新（再描画とy座標の更新）
-    for tama in bullets_group.sprites():
-     tama.draw_bullet(screen,)
-     tama.update_bullet()
-    
 
     #キャラクターの配置
     screen.blit(player.surf,player.rect)
