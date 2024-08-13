@@ -26,7 +26,6 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((width,height))
 screen_name = pygame.display.set_caption('スペースシューティングゲーム')
 
-bullets_group = pygame.sprite.Group()
 
 #関数
 # def fire_bullet():
@@ -36,9 +35,10 @@ bullets_group = pygame.sprite.Group()
 #==========================================================
 #インスタンス生成
 player = player.Player()
-enemy = enemy.enemy()
+enemy = enemy.Enemy() 
 boss = boss.boss()
 bg = back_ground.Background()
+bullets_group = pygame.sprite.Group()
 
 #メインループ===============================================================================================================
 flag  =True
@@ -61,6 +61,10 @@ while flag:
 
     #キャラクターの配置
     screen.blit(player.surf,player.rect)
+
+    #敵の配置
+    enemy.enemy_update()
+    screen.blit(enemy.surf,enemy.rect)
 
     #画面の更新
     pygame.display.update()

@@ -23,11 +23,8 @@ class Bullet():
         self.rect.x = player_rect_x
         self.rect.y = player_rect_y
         for i in range(0, self.rect.y):
-            y = float(self.rect.y)
-            y -= 0.01
-            self.rect.y = y
+            self.rect.y -= 1
             self.draw_bullet(screen)
-
 
 
 
