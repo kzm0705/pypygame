@@ -15,14 +15,13 @@ class Bullet(pygame.sprite.Sprite):
         self.y = float(self.rect.y)
 
     def draw_bullet(self,screen,):
-        # self.rect.x = x
-        # self.rect.y = y
+        #self.rect.left = x
+        #self.rect.top = y
         pygame.draw.rect(screen,(255,255,255),self.rect)
 
     def update_bullet(self):
         self.y -= 5
         self.rect.y = self.y
-
 
 
 
