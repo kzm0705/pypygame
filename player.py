@@ -3,6 +3,7 @@ from pygame.locals import *
 import player
 import enemy
 import boss
+import bullet
 from pygame.locals import (
     RLEACCEL,
     K_UP,
@@ -44,3 +45,10 @@ class Player():
             self.rect.top = 0
         if self.rect.bottom >= height:
             self.rect.bottom = height 
+
+    def fire_bullet(self, screen):
+        fired_bullet = bullet.Bullet()
+        current_player_rect_x = self.rect.centerx
+        current_player_rect_y = self.rect.centery
+        fired_bullet.update_bullet(current_player_rect_x, current_player_rect_y, screen)
+            
