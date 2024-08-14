@@ -35,7 +35,7 @@ screen_name = pygame.display.set_caption('スペースシューティングゲ�
 #==========================================================
 #インスタンス生成
 player = player.Player()
-enemy = enemy.Enemy() 
+enemy = enemy.Enemy()
 boss = boss.boss()
 bg = back_ground.Background()
 bullets_group = pygame.sprite.Group()
@@ -62,9 +62,9 @@ while flag:
     #キャラクターの配置
     screen.blit(player.surf,player.rect)
 
-    #敵の配置
-    enemy.enemy_update()
-    screen.blit(enemy.surf,enemy.rect)
+    #bossの配置
+    boss.boss_update()
+    screen.blit(boss.surf,boss.rect)
 
     #画面の更新
     pygame.display.update()
