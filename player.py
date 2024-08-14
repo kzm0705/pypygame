@@ -27,15 +27,15 @@ class Player():
         self.rect = self.surf.get_rect(center=(width-220, height-50))
 
     def update(self, pressed_keys):
-        if pressed_keys[K_UP]:
+        if pressed_keys[K_w]:
             self.rect.move_ip(0, -5)
             # move_up_sound.play()
-        if pressed_keys[K_DOWN]:
+        if pressed_keys[K_s]:
             self.rect.move_ip(0, 5)
             # move_down_sound.play()
-        if pressed_keys[K_LEFT]:
+        if pressed_keys[K_a]:
             self.rect.move_ip(-5, 0)
-        if pressed_keys[K_RIGHT]:
+        if pressed_keys[K_d]:
             self.rect.move_ip(5, 0)
         if self.rect.left < 0:
             self.rect.left = 0
