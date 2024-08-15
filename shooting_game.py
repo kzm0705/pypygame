@@ -36,9 +36,9 @@ screen_name = pygame.display.set_caption('スペースシューティングゲ�
 
 def _create_enemy():
     global TIMER 
-    enemy = Enemy(enemy_group,220,100)
     TIMER += 1
     if TIMER > 50:
+        print(TIMER)
         Enemy(enemy_group,220,100)
         TIMER = 0
 
@@ -49,7 +49,7 @@ boss = boss.boss()
 bg = back_ground.Background()
 bullets_group = pygame.sprite.Group()
 enemy_group = pygame.sprite.Group()
-
+enemy = Enemy(220,100)
 #メインループ===============================================================================================================
 flag  =True
 while flag:
@@ -73,9 +73,8 @@ while flag:
     screen.blit(player.surf,player.rect)
 
     #敵の描画
-    _create_enemy()
     enemy_group.draw(screen)
-    enemy_group.enemy_update()
+    Enemy.enemy_update()
     # #bossの配置
     # boss.boss_update()
     # screen.blit(boss.surf,boss.rect)
