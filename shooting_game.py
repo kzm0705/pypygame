@@ -1,10 +1,12 @@
 import pygame
 from pygame.locals import *
+import random
 import player
-from enemy import Enemy 
+import enemy
 import boss
 import bullet
 import back_ground
+
 
 #初期化
 pygame.init()
@@ -36,10 +38,9 @@ screen_name = pygame.display.set_caption('スペースシューティングゲ�
 
 def _create_enemy():
     global TIMER 
-    enemy = Enemy(enemy_group,220,100)
     TIMER += 1
-    if TIMER > 50:
-        Enemy(enemy_group,220,100)
+    if TIMER > 100:
+        enemy.Enemy(enemy_group,random.randint(50, 400),-10)
         TIMER = 0
 
 #==========================================================
@@ -75,7 +76,8 @@ while flag:
     #敵の描画
     _create_enemy()
     enemy_group.draw(screen)
-    enemy_group.enemy_update()
+    for ene in enemy_group:
+        ene.enemy_update()
     # #bossの配置
     # boss.boss_update()
     # screen.blit(boss.surf,boss.rect)
