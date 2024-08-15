@@ -2,8 +2,11 @@ import pygame
 from pygame.locals import *
 import math
 
+boss_HP = 0
+
 class boss():
     def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
         self.surf = pygame.image.load("pypygame/source/png/enemy.png").convert()
         self.surf.set_colorkey((255,255,255), RLEACCEL)
         self.rect = self.surf.get_rect(center=(100,100))
@@ -14,6 +17,8 @@ class boss():
         self.a = 3.14/360
         self.deg = 0
         self.rad = 0
+
+        boss_HP = 100
 
 
 

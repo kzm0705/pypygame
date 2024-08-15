@@ -37,8 +37,8 @@ screen_name = pygame.display.set_caption('スペースシューティングゲ�
 player = player.Player()
 enemy = enemy.Enemy()
 boss = boss.boss()
+bullet = bullet.Bullet()
 bg = back_ground.Background()
-bullets_group = pygame.sprite.Group()
 
 #メインループ===============================================================================================================
 flag  =True
@@ -54,7 +54,15 @@ while flag:
                 flag = False
             if event.key == pygame.K_SPACE:
                 player.fire_bullet(screen)
-                
+
+
+    #弾とボスの当たり判定
+    if(pygame.sprite.collide_rect(bullet, boss)):
+        print("hit")
+        boss.boss_HP -= 10
+        if(boss.boss_HP == 0):
+            boss.sprite.remove()
+            
 
     pressed_key = pygame.key.get_pressed()
     player.update(pressed_key)
