@@ -14,7 +14,7 @@ pygame.init()
 #設定========================
 
 width = 450
-height = 600
+height = 800
 
 RED = (255,0,0)
 GREEN =(0,255,0)

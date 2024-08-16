@@ -4,13 +4,13 @@ import player
 import enemy
 import boss
 
-height = 600
+height = 800
 
 class Background():
     def __init__(self):
         self.image = pygame.image.load("pypygame/source/png/back_ground_space.png")
         #スクロールスピード
-        self.scroll_speed = 1.3
+        self.scroll_speed = 1
         #スクロール用のY座標
         self.bgy = 0
         
