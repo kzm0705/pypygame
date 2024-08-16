@@ -6,11 +6,11 @@ import enemy
 import boss
 
 #Spriteクラスを継承する、Spriteで弾を管理する
-class Bullet():
+class Bullet(pygame.sprite.Sprite):
     def __init__(self):
-        # pygame.sprite.Sprite.__init__(self)
+        super().__init__()
         #長方形の弾を作る(x軸,y軸,width,height)
-        self.rect = pygame.Rect(230,550,5,10)
+        self.rect = pygame.Rect(0,0,5,5)
         #弾のｙ座標を浮動小数点数にする
         self.y = float(self.rect.y)
 

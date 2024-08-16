@@ -14,7 +14,7 @@ pygame.init()
 #設定========================
 
 width = 450
-height = 600
+height = 800
 
 RED = (255,0,0)
 GREEN =(0,255,0)
@@ -47,8 +47,8 @@ def _create_enemy():
 #インスタンス生成
 player = player.Player()
 boss = boss.boss()
+bullet = bullet.Bullet()
 bg = back_ground.Background()
-bullets_group = pygame.sprite.Group()
 enemy_group = pygame.sprite.Group()
 
 #メインループ===============================================================================================================
@@ -65,8 +65,25 @@ while flag:
                 flag = False
             if event.key == pygame.K_SPACE:
                 player.fire_bullet(screen)
-                
 
+    #Bossの当たり判定（調査中）             
+    boss_hit = pygame.sprite.collide_rect(bullet, boss)
+    # if boss_hit:
+    #     print(boss_hit)
+
+    boss_player_hit = pygame.sprite.collide_rect(player, boss)
+    if boss_player_hit:
+        print(boss_player_hit)
+        player.player_life -= 1
+        print(player.player_life)
+        if player.player_life == 0:
+            flag = False
+        else:
+            player.rect.x = 220
+            player.rect.y = 500
+
+
+    #プレイヤーの操作を反映
     pressed_key = pygame.key.get_pressed()
     player.update(pressed_key)
 
@@ -74,13 +91,14 @@ while flag:
     screen.blit(player.surf,player.rect)
 
     #敵の描画
-    _create_enemy()
-    enemy_group.draw(screen)
-    for ene in enemy_group:
-        ene.enemy_update()
+    # _create_enemy()
+    # enemy_group.draw(screen)
+    # for ene in e\nemy_group:
+    #     ene.enemy_update()
+
     # #bossの配置
-    # boss.boss_update()
-    # screen.blit(boss.surf,boss.rect)
+    boss.boss_update()
+    screen.blit(boss.surf,boss.rect)
 
     #画面の更新
     pygame.display.update()
@@ -88,6 +106,5 @@ while flag:
 #====================================================================================================================
 
 pygame.quit()
-
 
 

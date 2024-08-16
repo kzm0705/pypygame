@@ -16,15 +16,18 @@ from pygame.locals import (
 )
 
 width = 450
-height = 600
+height = 800
 bullet_speed = 5
 
-class Player():
+class Player(pygame.sprite.Sprite):
+    player_life = 0
+
     def __init__(self):
-        # super(player, self).__init__()
+        super().__init__()
         self.surf = pygame.image.load("pypygame/source/png/player.png").convert()
         self.surf.set_colorkey((255,255,255), RLEACCEL)
         self.rect = self.surf.get_rect(center=(width-220, height-50))
+        self.player_life = 3
 
     def update(self, pressed_keys):
         if pressed_keys[K_w]:

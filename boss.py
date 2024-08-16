@@ -2,9 +2,13 @@ import pygame
 from pygame.locals import *
 import math
 
-class boss():
+class boss(pygame.sprite.Sprite):
+
+    boss_hp = 0
+
     def __init__(self):
-        self.surf = pygame.image.load("pypygame/source/png/enemy.png").convert()
+        super().__init__()
+        self.surf = pygame.image.load("pypygame/source/png/boss.png").convert()
         self.surf.set_colorkey((255,255,255), RLEACCEL)
         self.rect = self.surf.get_rect(center=(100,100))
         self.radius = 80
@@ -15,7 +19,9 @@ class boss():
         self.deg = 0
         self.rad = 0
 
+        boss_hp = 100
 
+        
 
     def boss_update(self):
         #ボスを楕円形に移動させる
@@ -30,10 +36,8 @@ class boss():
         self.rect.x = x
         self.rect.y = y
 
-
-
-
-
+    def bullet_collision(self):
+        print()
 
 
 
