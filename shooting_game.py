@@ -6,6 +6,7 @@ import enemy
 import boss
 import bullet
 import back_ground
+import ui
 
 
 #初期化
@@ -50,6 +51,8 @@ boss = boss.boss()
 bullet = bullet.Bullet()
 bg = back_ground.Background()
 enemy_group = pygame.sprite.Group()
+score = ui.Userinterface()
+
 
 #メインループ===============================================================================================================
 flag  =True
@@ -65,6 +68,9 @@ while flag:
                 flag = False
             if event.key == pygame.K_SPACE:
                 player.fire_bullet(screen)
+
+    #スコアの表示
+    score.my_score(screen)
 
     #Bossの当たり判定（調査中）             
     boss_hit = pygame.sprite.collide_rect(bullet, boss)
@@ -91,10 +97,10 @@ while flag:
     screen.blit(player.surf,player.rect)
 
     #敵の描画
-    # _create_enemy()
-    # enemy_group.draw(screen)
-    # for ene in e\nemy_group:
-    #     ene.enemy_update()
+    _create_enemy()
+    enemy_group.draw(screen)
+    for ene in enemy_group:
+        ene.enemy_update()
 
     # #bossの配置
     boss.boss_update()
