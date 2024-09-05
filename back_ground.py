@@ -1,8 +1,5 @@
 import pygame
 from pygame.locals import *
-import player
-import enemy
-import boss
 
 height = 800
 
