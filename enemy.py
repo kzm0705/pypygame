@@ -21,7 +21,8 @@ class Enemy(pygame.sprite.Sprite):
 
 
 #敵を移動させる
-    def move_enemy(self):
+    def move_1(self):
+        '''敵をジグザグに移動させる'''
         self.timer += 1
         if self.timer > 80:
             self.direction.x *= -1
@@ -29,8 +30,16 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x += self.direction.x * self.speed
         self.rect.y += self.direction.y * self.speed
 
-    def enemy_update(self):
-        self.move_enemy()
+    def move_2(self):
+        '''縦方向に敵を移動させる'''
+        self.rect.y += self.speed
+
+    def move_3(self):
+        """横方向から敵を出現させ移動させる"""
+        self.rect.x += self.speed
+
+    # def enemy_update(self):
+    #     self.move_2()
 
 
 
